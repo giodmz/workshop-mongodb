@@ -1,6 +1,7 @@
 package com.giodmz.workshopmongo.resources;
 
 import com.giodmz.workshopmongo.domain.User;
+import com.giodmz.workshopmongo.dto.UserDTO;
 import com.giodmz.workshopmongo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value="/users")
@@ -21,9 +23,11 @@ public class UserResource {
 
     @RequestMapping(method= RequestMethod.GET)
     // melhora a estrutura http com possíveis erros e cabecalhos
-    public ResponseEntity<List<User>> findAll(){
+    public ResponseEntity<List<UserDTO>> findAll(){
         List<User> list = service.findAll();
-
-        return ResponseEntity.ok().body(list);
+        // convertendo uma lista User em uma lista UserDTO
+        // .map() pega o objeto x (User) e converte para UserDTO
+        List<UserDTO> listDto = list.stream().map(x -> new UserDTO(x)).collect(Collectors.toList());
+        return ResponseEntity.ok().body(listDto);
     }
 }
