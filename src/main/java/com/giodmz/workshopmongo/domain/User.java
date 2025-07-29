@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.io.Serializable;
 import java.util.Objects;
 
-@Value
+// @Value deixa a classe imutável
 @Builder
 @ToString
 @Getter

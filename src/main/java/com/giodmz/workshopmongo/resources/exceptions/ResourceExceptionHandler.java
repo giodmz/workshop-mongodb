@@ -1,7 +1,6 @@
 package com.giodmz.workshopmongo.resources.exceptions;
 
 import com.sun.jdi.ObjectCollectedException;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
