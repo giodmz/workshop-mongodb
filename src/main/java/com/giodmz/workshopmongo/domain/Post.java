@@ -2,6 +2,7 @@ package com.giodmz.workshopmongo.domain;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.giodmz.workshopmongo.dto.AuthorDTO;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -26,5 +27,5 @@ public class Post implements Serializable {
 
     private String title;
     private String body;
-    private User author;
+    private AuthorDTO author;
 }

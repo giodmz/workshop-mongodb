@@ -2,6 +2,7 @@ package com.giodmz.workshopmongo.config;
 
 import com.giodmz.workshopmongo.domain.Post;
 import com.giodmz.workshopmongo.domain.User;
+import com.giodmz.workshopmongo.dto.AuthorDTO;
 import com.giodmz.workshopmongo.repository.PostRepository;
 import com.giodmz.workshopmongo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,24 +39,24 @@ public class Instantiation implements CommandLineRunner {
         User snake = User.builder().name("Solid Snake").email("invisible@gmail.com").build();
         User decau = User.builder().name("Decau Imenso").email("16toneladas@gmail.com").build();
 
+        for (User user : Arrays.asList(makoto, decau, snake)) {
+            userRepository.save(user);
+        }
+
         Post post1 = Post.builder().title("Tartarus hoje.")
                 .body("Na hora da dark hour")
                 .date(now)
-                .author(makoto)
+                .author(new AuthorDTO(makoto))
                 .build();
         Post post2 = Post.builder().title("Persona")
                 .body("Persona 5 é o melhor jogo que já joguei na vida")
                 .date(now)
-                .author(makoto)
+                .author(new AuthorDTO(makoto))
                 .build();
 
         // salvando na db
         for (Post post : Arrays.asList(post1, post2)) {
             postRepository.save(post);
-        }
-
-        for (User user : Arrays.asList(makoto, decau, snake)) {
-            userRepository.save(user);
         }
 
     }
