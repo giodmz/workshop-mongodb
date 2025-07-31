@@ -18,5 +18,9 @@ public class PostService {
         return rep.findById(id).orElseThrow(ObjectCollectedException::new);
     }
 
+    public List<Post> findByTitle(String text) {
+        return rep.findByTitleContainingIgnoreCase(text);
+    }
+
 
 }
