@@ -3,6 +3,7 @@ package com.giodmz.workshopmongo.config;
 import com.giodmz.workshopmongo.domain.Post;
 import com.giodmz.workshopmongo.domain.User;
 import com.giodmz.workshopmongo.dto.AuthorDTO;
+import com.giodmz.workshopmongo.dto.CommentDTO;
 import com.giodmz.workshopmongo.repository.PostRepository;
 import com.giodmz.workshopmongo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,13 +55,37 @@ public class Instantiation implements CommandLineRunner {
                 .author(new AuthorDTO(makoto))
                 .build();
 
+
+
+        CommentDTO comment1 = CommentDTO.builder().text("Bora!")
+                .date(LocalDateTime.now())
+                .author(new AuthorDTO(snake))
+                .build();
+        CommentDTO comment2 = CommentDTO.builder().text("SMT - Shin Megami Tensei!!")
+                .date(LocalDateTime.now())
+                .author(new AuthorDTO(decau))
+                .build();
+        CommentDTO comment3 = CommentDTO.builder().text("INVISIBLE")
+                .date(LocalDateTime.now())
+                .author(new AuthorDTO(snake))
+                .build();
+
+//        for (CommentDTO comment : Arrays.asList(comment1, comment2, comment3)) {
+//            postRepository.save(comment);
+//        }
+
+        makoto.getPosts().add(post1);
+        makoto.getPosts().add(post2);
+
+        post1.getComments().add(comment1);
+        post1.getComments().add(comment2);
+        post1.getComments().add(comment3);
+
         // salvando na db
         for (Post post : Arrays.asList(post1, post2)) {
             postRepository.save(post);
         }
 
-        makoto.getPosts().add(post1);
-        makoto.getPosts().add(post2);
 
         userRepository.save(makoto);
 

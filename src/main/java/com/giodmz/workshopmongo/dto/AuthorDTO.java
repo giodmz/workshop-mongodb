@@ -12,8 +12,8 @@ import java.io.Serializable;
 @Setter
 public class AuthorDTO implements Serializable {
 
-    String id;
-    String name;
+    private String id;
+    private String name;
 
     public AuthorDTO(User obj) {
         id = obj.getId();
