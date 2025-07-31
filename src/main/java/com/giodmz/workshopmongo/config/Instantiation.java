@@ -59,5 +59,10 @@ public class Instantiation implements CommandLineRunner {
             postRepository.save(post);
         }
 
+        makoto.getPosts().add(post1);
+        makoto.getPosts().add(post2);
+
+        userRepository.save(makoto);
+
     }
 }

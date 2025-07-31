@@ -1,11 +1,15 @@
 package com.giodmz.workshopmongo.dto;
 
+import com.giodmz.workshopmongo.domain.Post;
 import com.giodmz.workshopmongo.domain.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor
 @Getter
@@ -21,7 +25,6 @@ public class UserDTO implements Serializable {
         id = obj.getId();
         name = obj.getName();
         email = obj.getEmail();
-
     }
 
 }
